@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Que es Huga?</h1>
+<input type="text" id="whatis"></input>
+<button onclick="headerCreate()">responder</button>
+<script>
+   function headerCreate() {
+      var h = document.createElement("HEADER");
+      document.body.appendChild(h);
+      var h2 = document.createElement("H2");
+      var txt = document.createTextNode(document.getElementById("whatis").value);
+      h2.appendChild(txt);
+      h.appendChild(h2);
+   }
+</script>
+</body>
+</html>
+

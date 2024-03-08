@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./auth/basic.password:/basic.password
+    ports:
+      - 8080:80
+      - 4443:443
+    environment:
+      - DOMAINS=${DOMAINS:-dojob.dev,www.dojob.dev,dregistry.dojob.dev}
+      - EMAIL=${EMAIL:-jonricchiuti@gmail.com}
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    external: true
