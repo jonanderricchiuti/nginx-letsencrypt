@@ -1,7 +1,6 @@
-version: "3.9"
-
 services:
   nginx:
+    image: dregistry.dojob.dev/nginx:0.0.0
     container_name: nginx
     restart: always
     build:

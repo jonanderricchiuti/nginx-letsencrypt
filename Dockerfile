@@ -24,3 +24,5 @@ COPY ./index.html /usr/share/nginx/html/
 COPY ./favicon.png /usr/share/nginx/html/favicon.ico
 RUN chmod 644 /usr/share/nginx/html/index.html
 RUN echo "0 0,12 * * * root /opt/certbot/bin/python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew --nginx -q" | tee -a /etc/crontab > /dev/null
+
+CMD cron && nginx -g "daemon off;"
